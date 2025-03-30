@@ -967,3 +967,170 @@ footer {
     transform: scale(1.1);
     background-color: var(--primary-color);
 }
+
+/* Add these new styles to your existing CSS file */
+
+/* Particle background */
+.particle-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Enhanced custom cursor */
+.custom-cursor {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    transition: width 0.3s, height 0.3s, border-color 0.3s;
+    mix-blend-mode: difference;
+}
+
+.cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.1s;
+}
+
+.custom-cursor.active {
+    width: 60px;
+    height: 60px;
+    border-color: var(--accent-color);
+}
+
+.cursor-dot.active {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: var(--accent-color);
+}
+
+/* 3D card effect */
+.feature-card {
+    transition: transform 0.2s ease-out;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.feature-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card .feature-icon {
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: translateY(-10px) scale(1.1);
+}
+
+/* Animated gradient buttons */
+.gradient-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--hover-color), var(--accent-color), var(--primary-color));
+    background-size: 300% 300%;
+    transition: all 0.5s ease;
+}
+
+.animate-gradient {
+    animation: gradientShift 2s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Enhanced testimonial styles */
+.testimonial {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-progress {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.testimonial-progress span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.testimonial-progress span.active {
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* Enhanced hero section */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, white);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Glowing effect for important elements */
+.gradient-text {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+}
+
+.gradient-text:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(10px);
+    opacity: 0.5;
+    background: inherit;
+    z-index: -1;
+}
