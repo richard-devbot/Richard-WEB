@@ -253,6 +253,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add animated gradient background to buttons
     initAnimatedButtons();
+    
+    // Initialize modern layout enhancements
+    initModernLayout();
 });
 
 // Custom cursor effect
@@ -492,4 +495,96 @@ function initTextScramble() {
         
         observer.observe(heroHeading);
     }
+}
+
+// Modern layout enhancements
+function initModernLayout() {
+    // Add floating elements effect
+    const floatingElements = document.querySelectorAll('.floating-animation');
+    floatingElements.forEach(element => {
+        const randomDelay = Math.random() * 2;
+        element.style.animation = `float 6s ease-in-out ${randomDelay}s infinite`;
+    });
+    
+    // Add staggered animations to feature cards
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+    });
+    
+    // Create diagonal section dividers
+    const sections = document.querySelectorAll('section:not(.hero)');
+    sections.forEach(section => {
+        if (!section.querySelector('.section-divider') && !section.classList.contains('no-divider')) {
+            const prevBg = getComputedStyle(section.previousElementSibling).backgroundColor;
+            const currentBg = getComputedStyle(section).backgroundColor;
+            
+            if (prevBg !== currentBg) {
+                const divider = document.createElement('div');
+                divider.className = 'section-divider';
+                section.prepend(divider);
+            }
+        }
+    });
+    
+    // Add hover effects to CTA buttons
+    const ctaButtons = document.querySelectorAll('.cta-buttons .btn');
+    ctaButtons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            ctaButtons.forEach(btn => {
+                if (btn !== this) btn.classList.add('dim');
+            });
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            ctaButtons.forEach(btn => btn.classList.remove('dim'));
+        });
+    });
+    
+    // Add scroll indicator
+    if (document.querySelector('.hero')) {
+        const scrollIndicator = document.createElement('div');
+        scrollIndicator.className = 'scroll-indicator';
+        scrollIndicator.innerHTML = '<div class="mouse"><div class="wheel"></div></div><div class="arrow"><span></span><span></span><span></span></div>';
+        document.querySelector('.hero').appendChild(scrollIndicator);
+        
+        scrollIndicator.addEventListener('click', () => {
+            const featuresSection = document.getElementById('features');
+            if (featuresSection) {
+                featuresSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+    
+    // Add grid layout enhancement for feature cards
+    enhanceFeatureGrid();
+    
+    // Add content width constraints for better readability
+    addContentConstraints();
+}
+
+// Enhance feature grid layout
+function enhanceFeatureGrid() {
+    const featureGrid = document.querySelector('.feature-grid');
+    if (featureGrid) {
+        // Add masonry-like layout effect
+        const cards = featureGrid.querySelectorAll('.feature-card');
+        if (cards.length > 3) {
+            // Create a more interesting layout for larger screens
+            if (window.innerWidth > 768) {
+                cards[0].classList.add('feature-large');
+                cards[cards.length - 1].classList.add('feature-large');
+            }
+        }
+    }
+}
+
+// Add content constraints for better readability
+function addContentConstraints() {
+    const contentSections = document.querySelectorAll('.section-header, .hero-content, .process-content');
+    contentSections.forEach(section => {
+        if (!section.classList.contains('full-width')) {
+            section.classList.add('content-constrained');
+        }
+    });
 }
