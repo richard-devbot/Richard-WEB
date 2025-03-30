@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WaiGenie - AI Content & Solutions</title>
+    <title>WaiGenie - AI-Powered Testing & Automation Solutions</title>
+    <meta name="description" content="WaiGenie offers cutting-edge AI solutions for software testing, automation, and productivity enhancement. Founded by Richardson Gunde, we transform how teams approach quality assurance.">
+    <meta name="keywords" content="AI testing, automation, LLM, Crew AI, prompt engineering, QA automation, SDET, AI agents">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom animations CSS -->
+    <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
-    <header>
+    <header class="sticky-header">
         <div class="container">
             <div class="logo">
                 <h1>Wai<span>Genie</span></h1>
@@ -22,6 +28,9 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
+            <div class="cta-button-header">
+                <a href="#" class="btn btn-primary btn-sm">Get Started</a>
+            </div>
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
@@ -30,40 +39,116 @@
 
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>AI-Powered Solutions for Modern Challenges</h1>
-                <p>Explore cutting-edge AI tools, insights, and strategies to enhance your productivity and solve complex problems.</p>
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="animated-heading">Revolutionize Your Workflow with <span class="gradient-text">AI-Powered</span> Solutions</h1>
+                <p>Transforming software testing and automation with artificial intelligence. Reduce testing time by 80% while doubling test coverage.</p>
                 <div class="cta-buttons">
-                    <a href="blogs.html" class="btn btn-primary">Read Our Blog</a>
-                    <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+                    <a href="#features" class="btn btn-primary">Explore Solutions</a>
+                    <a href="contact.html" class="btn btn-secondary">Book a Demo</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                        <h3>80%</h3>
+                        <p>Testing Time Reduction</p>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                        <h3>2x</h3>
+                        <p>Test Coverage Increase</p>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                        <h3>24/7</h3>
+                        <p>Automated Support</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left">
+                <img src="images/ai-dashboard.png" alt="WaiGenie AI Dashboard" class="floating-animation">
+            </div>
+        </div>
+        <div class="shape-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Powerful AI Solutions</h2>
+                <p class="section-subtitle">Cutting-edge tools designed to transform your workflow</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Agents</h3>
+                    <p>Custom AI agents designed to automate workflows and enhance productivity across your organization.</p>
+                    <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>LLM Solutions</h3>
+                    <p>Leveraging large language models to solve complex business challenges and streamline operations.</p>
+                    <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Test Automation</h3>
+                    <p>Reduce testing time by 80% with our AI-powered test automation solutions and frameworks.</p>
+                    <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Prompt Engineering</h3>
+                    <p>Expert prompt crafting to get the most out of AI models and enhance your business processes.</p>
+                    <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="features">
+    <section class="how-it-works">
         <div class="container">
-            <h2 class="section-title">What We Offer</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>AI Agents</h3>
-                    <p>Custom AI agents designed to automate workflows and enhance productivity.</p>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Our streamlined process delivers results</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step" data-aos="fade-right">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Analyze</h3>
+                        <p>We analyze your current testing and automation processes to identify opportunities for improvement.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>LLM Solutions</h3>
-                    <p>Leveraging large language models to solve complex business challenges.</p>
+                <div class="process-step" data-aos="fade-right" data-aos-delay="100">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Implement</h3>
+                        <p>Our AI solutions are implemented seamlessly into your existing workflow with minimal disruption.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Automation</h3>
-                    <p>Streamline your processes with intelligent automation solutions.</p>
+                <div class="process-step" data-aos="fade-right" data-aos-delay="200">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Optimize</h3>
+                        <p>Continuous optimization ensures your testing and automation processes improve over time.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Prompt Engineering</h3>
-                    <p>Expert prompt crafting to get the most out of AI models.</p>
+                <div class="process-step" data-aos="fade-right" data-aos-delay="300">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Scale</h3>
+                        <p>As your needs grow, our solutions scale with you, providing consistent results at any size.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,56 +156,121 @@
 
     <section class="latest-blogs">
         <div class="container">
-            <h2 class="section-title">Latest Insights</h2>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Latest Insights</h2>
+                <p class="section-subtitle">Expert knowledge to keep you ahead of the curve</p>
+            </div>
             <div class="blog-grid">
-                
-                <div class="blog-card">
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="blog-image">
                         <img src="https://img.youtube.com/vi/GjrN5ne-t4I/maxresdefault.jpg" alt="Claude AI WhatsApp Integration: Discover the Essential Guide to Connect Them">
+                        <div class="blog-category">Integration</div>
                     </div>
                     <div class="blog-content">
                         <h3>Claude AI WhatsApp Integration: Discover the Essential Guide to Connect Them</h3>
                         <p>Estimated Reading Time: 7 minutes</p>
-                        <a href="blogs/20250330_GjrN5ne-t4I.html" class="read-more">Read More</a>
+                        <a href="blogs/20250330_GjrN5ne-t4I.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
         
-                <div class="blog-card">
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="blog-image">
                         <img src="https://img.youtube.com/vi/juJXe0JRRlc/maxresdefault.jpg" alt="MCP Installer: Discover Effortless MCP Server Setup Using Simple Text Prompts">
+                        <div class="blog-category">Automation</div>
                     </div>
                     <div class="blog-content">
                         <h3>MCP Installer: Discover Effortless MCP Server Setup Using Simple Text Prompts</h3>
                         <p>Estimated Reading Time: 7 Minutes</p>
-                        <a href="blogs/20250330_juJXe0JRRlc.html" class="read-more">Read More</a>
+                        <a href="blogs/20250330_juJXe0JRRlc.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-        
             </div>
-            <div class="view-all">
+            <div class="view-all" data-aos="fade-up">
                 <a href="blogs.html" class="btn btn-outline">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="companies">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Trusted By Innovative Teams</h2>
+            </div>
+            <div class="company-logos" data-aos="fade-up">
+                <div class="company-logo"><img src="images/company1.png" alt="Company 1"></div>
+                <div class="company-logo"><img src="images/company2.png" alt="Company 2"></div>
+                <div class="company-logo"><img src="images/company3.png" alt="Company 3"></div>
+                <div class="company-logo"><img src="images/company4.png" alt="Company 4"></div>
+                <div class="company-logo"><img src="images/company5.png" alt="Company 5"></div>
             </div>
         </div>
     </section>
 
     <section class="testimonials">
         <div class="container">
-            <h2 class="section-title">What Our Clients Say</h2>
-            <div class="testimonial-slider">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Success stories from organizations we've helped</p>
+            </div>
+            <div class="testimonial-slider" data-aos="fade-up">
                 <div class="testimonial">
-                    <p>"WaiGenie's AI solutions have transformed our workflow, saving us countless hours on repetitive tasks."</p>
+                    <div class="testimonial-content">
+                        <p>"WaiGenie's AI solutions have transformed our workflow, saving us countless hours on repetitive tasks. The implementation was smooth and the results were immediate."</p>
+                    </div>
                     <div class="client">
-                        <h4>John Smith</h4>
-                        <p>CTO, Tech Innovations</p>
+                        <div class="client-image">
+                            <img src="images/client1.jpg" alt="John Smith">
+                        </div>
+                        <div class="client-info">
+                            <h4>John Smith</h4>
+                            <p>CTO, Tech Innovations</p>
+                        </div>
                     </div>
                 </div>
                 <div class="testimonial">
-                    <p>"The custom AI agents developed by Richardson's team have increased our productivity by over 40%."</p>
+                    <div class="testimonial-content">
+                        <p>"The custom AI agents developed by Richardson's team have increased our productivity by over 40%. Their expertise in automation and AI is unmatched in the industry."</p>
+                    </div>
                     <div class="client">
-                        <h4>Sarah Johnson</h4>
-                        <p>Operations Manager, DataFlow Inc.</p>
+                        <div class="client-image">
+                            <img src="images/client2.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="client-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Operations Manager, DataFlow Inc.</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="testimonial-controls">
+                <button class="prev-testimonial"><i class="fas fa-arrow-left"></i></button>
+                <button class="next-testimonial"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Transform Your Workflow?</h2>
+                <p>Join hundreds of organizations that have revolutionized their testing and automation processes with WaiGenie.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">Get Started Today</a>
+                    <a href="#" class="btn btn-outline-light">Schedule a Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content" data-aos="fade-up">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest articles and insights on AI development.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
             </div>
         </div>
     </section>
@@ -131,9 +281,24 @@
                 <div class="footer-logo">
                     <h2>Wai<span>Genie</span></h2>
                     <p>Empowering businesses with AI-driven solutions</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="https://www.youtube.com/@computer-ai-agent"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 <div class="footer-links">
-                    <h3>Quick Links</h3>
+                    <h3>Solutions</h3>
+                    <ul>
+                        <li><a href="#">AI Testing</a></li>
+                        <li><a href="#">Automation</a></li>
+                        <li><a href="#">LLM Integration</a></li>
+                        <li><a href="#">Prompt Engineering</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Company</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="blogs.html">Blogs</a></li>
@@ -141,13 +306,14 @@
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-social">
-                    <h3>Connect With Us</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="https://github.com/Computer-Agent">GitHub</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -157,6 +323,16 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Initialize AOS animation library
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
 </body>
 </html>
