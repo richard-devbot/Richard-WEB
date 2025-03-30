@@ -24,14 +24,59 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Close menu when clicking a link
-    const navLinks = document.querySelectorAll('nav ul li a');
-    navLinks.forEach(link => {
+    const menuNavLinks = document.querySelectorAll('nav ul li a');
+    menuNavLinks.forEach(link => {
         link.addEventListener('click', function() {
             nav.classList.remove('active');
             menuOverlay.classList.remove('active');
             body.classList.remove('no-scroll');
         });
     });
+    
+    // Add animations to elements when they come into view
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.feature-card, .blog-card, .testimonial, .section-title, .hero-content');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (elementPosition < screenPosition) {
+                element.classList.add('animate');
+            }
+        });
+    };
+    
+    // Run animation check on load and scroll
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Run once on page load
+    
+    // Add parallax effect to hero section
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.pageYOffset;
+            hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+        });
+    }
+    
+    // Add typing animation to hero heading
+    const heroHeading = document.querySelector('.hero-content h1');
+    if (heroHeading && window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+        const text = heroHeading.textContent;
+        heroHeading.textContent = '';
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                heroHeading.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        
+        setTimeout(typeWriter, 500);
+    }
     
     // Blog search functionality
     const searchInput = document.getElementById('search-blogs');
@@ -108,6 +153,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Animate counter numbers
+    const counters = document.querySelectorAll('.counter-number');
+    if (counters.length > 0) {
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    let count = 0;
+                    const updateCounter = () => {
+                        const increment = target / 100;
+                        if (count < target) {
+                            count += increment;
+                            counter.innerText = Math.ceil(count);
+                            setTimeout(updateCounter, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCounter();
+                    observer.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+    }
+    
     // Form submission handling
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
@@ -134,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const successMessage = document.createElement('div');
                 successMessage.classList.add('success-message');
-                successMessage.innerHTML = '<h3>Thank you!</h3><p>Your submission has been received. We'll get back to you soon.</p>';
+                successMessage.innerHTML = '<h3>Thank you!</h3><p>Your submission has been received. Weil get back to you soon .</p>';
                 
                 formParent.appendChild(successMessage);
                 
