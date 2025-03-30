@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize animations
     initRevealAnimations();
     
+    // Add particle background effect
+    initParticleBackground();
+    
     // Mobile menu toggle with animation
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
@@ -131,15 +134,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Interactive feature cards
+    // Interactive feature cards with hover effects
     const featureCards = document.querySelectorAll('.feature-card');
     
     featureCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             featureCards.forEach(c => c.classList.remove('active'));
             this.classList.add('active');
+            
+            // Add 3D tilt effect
+            card.addEventListener('mousemove', handleTilt);
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            // Remove tilt effect
+            card.removeEventListener('mousemove', handleTilt);
+            card.style.transform = 'perspective(500px) rotateX(0) rotateY(0)';
         });
     });
+    
+    function handleTilt(e) {
+        const card = this;
+        const cardRect = card.getBoundingClientRect();
+        const cardCenterX = cardRect.left + cardRect.width / 2;
+        const cardCenterY = cardRect.top + cardRect.height / 2;
+        const angleX = (e.clientY - cardCenterY) / 15;
+        const angleY = (cardCenterX - e.clientX) / 15;
+        
+        card.style.transform = `perspective(500px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+    }
     
     // Enhanced newsletter form with validation and animation
     const newsletterForm = document.querySelector('.newsletter-form');
@@ -227,6 +250,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize text scramble effect for hero heading
     initTextScramble();
+    
+    // Add animated gradient background to buttons
+    initAnimatedButtons();
 });
 
 // Custom cursor effect
@@ -240,11 +266,17 @@ function initCustomCursor() {
     document.body.appendChild(cursorDot);
     
     document.addEventListener('mousemove', e => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        
-        cursorDot.style.left = e.clientX + 'px';
-        cursorDot.style.top = e.clientY + 'px';
+        // Use requestAnimationFrame for smoother cursor movement
+        requestAnimationFrame(() => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            // Add slight delay to dot for trailing effect
+            setTimeout(() => {
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+            }, 50);
+        });
     });
     
     // Add hover effect for interactive elements
@@ -253,12 +285,94 @@ function initCustomCursor() {
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
             cursor.classList.add('active');
+            cursorDot.classList.add('active');
         });
         
         el.addEventListener('mouseleave', () => {
             cursor.classList.remove('active');
+            cursorDot.classList.remove('active');
         });
     });
+}
+
+// Particle background effect
+function initParticleBackground() {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'particle-background';
+    document.body.insertBefore(canvas, document.body.firstChild);
+    
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+    
+    // Resize canvas when window size changes
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+    
+    // Particle settings
+    const particleCount = 100;
+    const particles = [];
+    const connectionDistance = 150;
+    const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
+    
+    // Create particles
+    for (let i = 0; i < particleCount; i++) {
+        particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: Math.random() * 0.5 - 0.25,
+            vy: Math.random() * 0.5 - 0.25,
+            size: Math.random() * 3 + 1
+        });
+    }
+    
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        
+        // Update and draw particles
+        for (let i = 0; i < particleCount; i++) {
+            const p = particles[i];
+            
+            // Move particles
+            p.x += p.vx;
+            p.y += p.vy;
+            
+            // Bounce off edges
+            if (p.x < 0 || p.x > width) p.vx *= -1;
+            if (p.y < 0 || p.y > height) p.vy *= -1;
+            
+            // Draw particle
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = primaryColor;
+            ctx.globalAlpha = 0.5;
+            ctx.fill();
+            
+            // Connect particles
+            for (let j = i + 1; j < particleCount; j++) {
+                const p2 = particles[j];
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < connectionDistance) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.strokeStyle = primaryColor;
+                    ctx.globalAlpha = 0.2 * (1 - distance / connectionDistance);
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
 }
 
 // Reveal animations on scroll
